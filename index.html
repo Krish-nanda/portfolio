@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Krish Nanda — Portfolio</title>
+  <meta name="description" content="Krish Nanda — BTech CSE • Data Science & ML • Projects: AI Career Guidance, Loan Sanction, House Price Prediction, etc." />
+
+  <!-- Google Font (optional) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --glass: rgba(255,255,255,0.10);
+      --glass-2: rgba(255,255,255,0.06);
+      --accent: rgba(33, 150, 243, 0.95);
+      --muted: rgba(255,255,255,0.85);
+      --max-width: 1100px;
+      --gap: 18px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      color: #fff;
+      background: linear-gradient(180deg,#062033 0%, #0e3b56 40%, #144b72 100%);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      min-height:100vh;
+      display:flex;
+      align-items:flex-start;
+      justify-content:center;
+      padding:32px 20px;
+    }
+
+    /* background image blur layer (uses bg.jpg in the same directory) */
+    body::before{
+      content:'';
+      position:fixed;
+      inset:-25vmax;
+      background-image:url('bg.jpg');
+      background-size:cover;
+      background-position:center;
+      filter:blur(14px) saturate(110%);
+      transform:scale(1.03);
+      z-index:-2;
+      pointer-events:none;
+    }
+
+    /* subtle grain overlay */
+    body::after{
+      content:'';
+      position:fixed;inset:0;z-index:-1;pointer-events:none;
+      background:linear-gradient(180deg, rgba(0,0,0,0.06), rgba(0,0,0,0.14));
+      mix-blend-mode:multiply;
+    }
+
+    .container{
+      width:100%;
+      max-width:var(--max-width);
+      display:grid;
+      grid-template-columns: 340px 1fr;
+      gap:var(--gap);
+      align-items:start;
+    }
+
+    /* left column (profile) */
+    .panel{
+      border-radius:16px;
+      padding:22px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+      backdrop-filter: blur(8px) saturate(120%);
+      box-shadow: 0 8px 40px rgba(2,6,23,0.6);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .profile-pic{
+      width:120px;height:120px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,0.16);
+      display:block;margin:0 auto 14px;
+    }
+    .name{font-size:1.15rem;font-weight:700;text-align:center;margin-bottom:6px}
+    .role{font-size:0.92rem;opacity:.95;text-align:center;margin-bottom:14px}
+    .location{font-size:0.82rem;opacity:.8;text-align:center;margin-bottom:14px}
+
+    .badges{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+    .badge{background:var(--glass-2);padding:8px 10px;border-radius:999px;font-size:0.78rem;border:1px solid rgba(255,255,255,0.04)}
+
+    .contact{
+      margin-top:18px;display:flex;gap:10px;align-items:center;justify-content:center;
+    }
+    .contact a{display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:var(--muted);font-weight:600;padding:8px 12px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.04)}
+    .icon{width:20px;height:20px;display:inline-block}
+
+    /* right column (content) */
+    .content{
+      border-radius:16px;padding:22px;background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));backdrop-filter: blur(8px);border:1px solid rgba(255,255,255,0.06);
+      box-shadow: 0 12px 60px rgba(2,6,23,0.6);
+    }
+
+    .section{margin-bottom:20px}
+    h2{font-size:1.05rem;margin-bottom:12px}
+    p.lead{color:var(--muted);opacity:.95;line-height:1.45}
+
+    /* skills */
+    .skills{display:flex;flex-wrap:wrap;gap:12px}
+    .skill{flex: 0 1 180px;background:var(--glass);padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,0.04)}
+    .skill strong{display:block;font-size:0.88rem;margin-bottom:6px}
+    .meter{height:8px;background:rgba(255,255,255,0.06);border-radius:999px;overflow:hidden}
+    .meter > span{display:block;height:100%;background:linear-gradient(90deg, var(--accent), rgba(33,150,243,0.6));border-radius:999px}
+
+    /* projects grid */
+    .projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,0.04);backdrop-filter:blur(6px);}
+    .card h3{font-size:0.98rem;margin-bottom:6px}
+    .tag{display:inline-block;font-size:0.72rem;padding:6px 8px;border-radius:8px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.03);margin-right:8px}
+    .muted{font-size:0.82rem;color:var(--muted)}
+    .card p{font-size:0.85rem;color:var(--muted);line-height:1.35;margin:8px 0}
+    .card .actions{display:flex;gap:8px;margin-top:8px}
+    .btn{padding:8px 10px;border-radius:10px;text-decoration:none;font-weight:600;font-size:0.82rem;border:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02)}
+
+    /* footer */
+    footer{margin-top:18px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.03);display:flex;justify-content:space-between;align-items:center;font-size:0.85rem;color:var(--muted)}
+
+    /* responsive */
+    @media (max-width:980px){
+      .container{grid-template-columns:1fr;}
+      .panel{order:2}
+      .content{order:1}
+    }
+    @media (max-width:420px){
+      body{padding:18px}
+      .panel{padding:16px}
+      .content{padding:16px}
+      .profile-pic{width:96px;height:96px}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <aside class="panel">
+      <img src="profile.jpg" alt="Profile" class="profile-pic" />
+      <div class="name">Krish Nanda</div>
+      <div class="role">BTech CSE • Machine Learning Aspirant</div>
+      <div class="location">Jaipur, Rajasthan • Batch of 2027</div>
+
+      <div class="badges" style="margin-top:14px">
+        <span class="badge">Python</span>
+        <span class="badge">Data Science</span>
+        <span class="badge">Machine Learning</span>
+        <span class="badge">Deep Learning</span>
+        <span class="badge">Flask</span>
+        <span class="badge">Git</span>
+      </div>
+
+      <div class="contact">
+        <!-- placeholders for icons: linkedin.png and email.png -->
+        <a href="https://www.linkedin.com/in/krishnanda01" target="_blank"><img src="linkedin.png" alt="LinkedIn" class="icon"> LinkedIn</a>
+        <a href="mailto:kn023363@gmail.com"><img src="email.png" alt="Email" class="icon"> Email</a>
+      </div>
+
+      <div style="margin-top:18px">
+        <div class="muted" style="text-align:center;font-size:0.8rem">Open to internships & collaborations • Available for ML & Data projects</div>
+      </div>
+    </aside>
+
+    <main class="content">
+      <section class="section">
+        <h2>About</h2>
+        <p class="lead">BTech Computer Science student focused on Data Science, Machine Learning and AI. Experienced in Python (NumPy, Pandas, Matplotlib), model-building, Flask-based apps, and end-to-end ML pipelines. I turn raw data into actionable insights and production-ready models.</p>
+      </section>
+
+      <section class="section">
+        <h2>Skills</h2>
+        <div class="skills" style="margin-top:10px">
+          <div class="skill"><strong>Python</strong><div class="meter"><span style="width:92%"></span></div></div>
+          <div class="skill"><strong>Machine Learning</strong><div class="meter"><span style="width:86%"></span></div></div>
+          <div class="skill"><strong>Data Analysis</strong><div class="meter"><span style="width:88%"></span></div></div>
+          <div class="skill"><strong>Deep Learning</strong><div class="meter"><span style="width:68%"></span></div></div>
+          <div class="skill"><strong>Flask & Web</strong><div class="meter"><span style="width:74%"></span></div></div>
+          <div class="skill"><strong>Git & Collaboration</strong><div class="meter"><span style="width:82%"></span></div></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Selected Projects</h2>
+        <div class="projects-grid" style="margin-top:10px">
+
+          <article class="card">
+            <h3>AI Career Guidance</h3>
+            <div class="tag">Python • ML • Recommender</div>
+            <p>AI-driven system that analyzes skills, interests and goals to recommend career paths. Includes preprocessing, feature analysis and end-to-end predictive logic for personalized guidance.</p>
+            <div class="actions">
+              <a class="btn" href="https://github.com/Krish-nanda/AI_CAREER_GUIDANCE" target="_blank">View (GitHub)</a>
+              <a class="btn" href="#">Live</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>Loan Sanction (Loan Approval)</h3>
+            <div class="tag">Predictive Modeling</div>
+            <p>Machine learning pipeline to predict loan approval using applicant features. Includes data cleaning, feature engineering and model comparison for credit risk assessment.</p>
+            <div class="actions"><a class="btn" href="#">View (GitHub)</a></div>
+          </article>
+
+          <article class="card">
+            <h3>House Price Prediction</h3>
+            <div class="tag">Regression • EDA</div>
+            <p>Regression model leveraging historical housing data to forecast prices. Focused on feature selection, cross-validation and deployment-ready model export.</p>
+            <div class="actions"><a class="btn" href="#">View (GitHub)</a></div>
+          </article>
+
+          <article class="card">
+            <h3>Laptop Price Prediction</h3>
+            <div class="tag">Data Engineering</div>
+            <p>Structured dataset, engineered categorical and numerical features, and trained regression models to estimate laptop prices with interpretability in mind.</p>
+            <div class="actions"><a class="btn" href="#">View (GitHub)</a></div>
+          </article>
+
+          <article class="card">
+            <h3>Fake Insta App (ML Detection)</h3>
+            <div class="tag">Classification</div>
+            <p>Built models and heuristics to detect fake or bot-like Instagram accounts using behavioral and textual features.</p>
+            <div class="actions"><a class="btn" href="#">View (GitHub)</a></div>
+          </article>
+
+          <article class="card">
+            <h3>Ollama Chatbot</h3>
+            <div class="tag">NLP • LLMs</div>
+            <p>Prototype conversational agent integrating LLMs and retrieval to provide contextual answers and assistance for domain-specific queries.</p>
+            <div class="actions"><a class="btn" href="#">View (GitHub)</a></div>
+          </article>
+
+          <article class="card">
+            <h3>Rain Prediction</h3>
+            <div class="tag">Time Series</div>
+            <p>Explored meteorological datasets and built models to forecast rainfall and short-term weather events using feature engineering and sequence modeling.</p>
+            <div class="actions"><a class="btn" href="#">View (GitHub)</a></div>
+          </article>
+
+          <article class="card">
+            <h3>Miscellaneous & Mini Projects</h3>
+            <div class="tag">Various</div>
+            <p>Collection of small utilities, EDA notebooks and helper scripts used across experiments and hackathons.</p>
+            <div class="actions"><a class="btn" href="#">View (GitHub)</a></div>
+          </article>
+
+        </div>
+      </section>
+
+      <footer>
+        <div>© <strong>Krish Nanda</strong> • BTech CSE, Amity University Jaipur</div>
+        <div style="display:flex;gap:10px;align-items:center">
+          <a href="https://www.linkedin.com/in/krishnanda01" target="_blank" style="color:var(--muted);text-decoration:none">LinkedIn</a>
+          <a href="mailto:kn023363@gmail.com" style="color:var(--muted);text-decoration:none">kn023363@gmail.com</a>
+        </div>
+      </footer>
+
+    </main>
+  </div>
+
+  <!-- small script to swap project links if you want to populate from a JSON (optional) -->
+  <script>
+    // If you host your projects on GitHub, replace '#' anchors with actual URLs.
+    // Example structure to auto-fill links:
+    /*
+    const projects = {
+      'AI Career Guidance': 'https://github.com/krishnanda01/ai-career-guidance',
+      'Loan Sanction (Loan Approval)': 'https://github.com/krishnanda01/loan_sanction',
+      // ...etc
+    };
+    document.querySelectorAll('.card').forEach(card => {
+      const title = card.querySelector('h3').innerText.trim();
+      const a = card.querySelector('.actions a');
+      if(projects[title]) a.href = projects[title];
+    });
+    */
+  </script>
+</body>
+</html>
